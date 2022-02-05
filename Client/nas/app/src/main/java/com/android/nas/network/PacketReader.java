@@ -25,8 +25,8 @@ public class PacketReader extends AsyncTask<Void, Void, Void> {
         LogUtils.myLod(PacketReader.class,"doInBackground","");
         while(true){
 
+            return null;
         }
-        return null;
 
     }
     @Override

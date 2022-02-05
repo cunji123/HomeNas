@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.android.nas.guestManager.GuestManagerBinder;
 import com.android.nas.guestManager.GuestManagerService;
+import com.android.nas.guestManager.GuestManagerStateMachine;
 import com.android.nas.guestManager.ui.MainFragment;
 import com.android.nas.guestManager.ui.cloud.CloudFragment;
 import com.android.nas.guestManager.ui.profile.LoginActivity;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAGMENT_MAIN = 0;
     private static final int FRAGMENT_CLOUD = 1;
     private static final int FRAGMENT_PROFILE = 2;
+
+    private static GuestManagerStateMachine mGuestManagerStateMachine = null;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(MenuItem item) {
@@ -124,13 +127,15 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         showFragment(FRAGMENT_MAIN);
 
+        mGuestManagerStateMachine = GuestManagerStateMachine.makeStateMachine(getApplicationContext());
+/*
         //绑定GusetManagerService
         Intent guestManagerService = new Intent(this, GuestManagerService.class);
         bindService(guestManagerService,conn,BIND_AUTO_CREATE);
         if(mGuestManagerBinder == null){
             Log.d("MYTAG","is null");
         }
-
+*/
     }
 
 }
